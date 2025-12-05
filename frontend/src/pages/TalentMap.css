@@ -1,0 +1,230 @@
+.talent-map-container {
+  padding: var(--spacing-2xl) 0;
+}
+
+.map-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.map-header h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.map-subtitle {
+  font-size: 1.125rem;
+  color: var(--gray-400);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Map Stats */
+.map-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.map-stat-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+}
+
+.stat-icon-small {
+  color: var(--primary-400);
+}
+
+.stat-value-small {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gray-50);
+  line-height: 1;
+}
+
+.stat-label-small {
+  color: var(--gray-400);
+  font-size: 0.875rem;
+}
+
+/* Filter Section */
+.filter-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  color: var(--gray-300);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-500);
+  color: var(--gray-50);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  border-color: var(--primary-500);
+  color: white;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Visualization */
+.visualization-section {
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-2xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.talent-canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+}
+
+/* Skills List */
+.skills-list-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.skill-item {
+  padding: var(--spacing-lg);
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.skill-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--gray-50);
+}
+
+.skill-category {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.skill-count {
+  color: var(--gray-400);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 1s ease-out;
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* Languages */
+.languages-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.language-card {
+  padding: var(--spacing-lg);
+}
+
+.language-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--gray-50);
+  margin-bottom: 0.25rem;
+}
+
+.language-count {
+  color: var(--gray-400);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.language-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.language-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-500), var(--accent-600));
+  border-radius: var(--radius-full);
+  transition: width 1s ease-out;
+  box-shadow: 0 0 10px var(--accent-500);
+}
+
+@media (max-width: 768px) {
+  .visualization-section {
+    padding: var(--spacing-lg);
+    min-height: 400px;
+  }
+  
+  .talent-canvas {
+    width: 100%;
+    height: 400px;
+  }
+  
+  .skills-grid,
+  .languages-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-buttons {
+    justify-content: flex-start;
+  }
+}
