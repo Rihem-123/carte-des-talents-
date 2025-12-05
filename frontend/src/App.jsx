@@ -5,6 +5,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import TalentMap from './pages/TalentMap';
+import Talents from './pages/Talents';
+import Projects from './pages/Projects';
 import './index.css';
 
 // Protected Route Component
@@ -81,12 +83,7 @@ function AppContent() {
             path="/talents"
             element={
               <ProtectedRoute>
-                <div className="container" style={{ padding: '2rem 0' }}>
-                  <h1>Liste des Talents</h1>
-                  <p style={{ color: 'var(--gray-400)', marginTop: '1rem' }}>
-                    Page en cours de développement...
-                  </p>
-                </div>
+                <Talents />
               </ProtectedRoute>
             }
           />
@@ -94,12 +91,7 @@ function AppContent() {
             path="/projets"
             element={
               <ProtectedRoute>
-                <div className="container" style={{ padding: '2rem 0' }}>
-                  <h1>Projets Collaboratifs</h1>
-                  <p style={{ color: 'var(--gray-400)', marginTop: '1rem' }}>
-                    Page en cours de développement...
-                  </p>
-                </div>
+                <Projects />
               </ProtectedRoute>
             }
           />
