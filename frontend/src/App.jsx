@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import TalentMap from './pages/TalentMap';
 import Talents from './pages/Talents';
 import Projects from './pages/Projects';
+import Profile from './pages/Profile';
 import './index.css';
 
 // Protected Route Component
@@ -99,12 +100,7 @@ function AppContent() {
             path="/profil"
             element={
               <ProtectedRoute>
-                <div className="container" style={{ padding: '2rem 0' }}>
-                  <h1>Mon Profil</h1>
-                  <p style={{ color: 'var(--gray-400)', marginTop: '1rem' }}>
-                    Page en cours de développement...
-                  </p>
-                </div>
+                <Profile />
               </ProtectedRoute>
             }
           />
