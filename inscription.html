@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription – SkillSphere</title>
+
+    <style>
+        :root {
+            --neon: #1DBFDE;
+            --deep: #0f1c2c;
+            --light-text: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            height: 100vh;
+            color: var(--light-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; 
+            position: relative;
+
+            background: linear-gradient(135deg, #0a1628, #0f1c2c, #0a1f33);
+            background-size: 300% 300%;
+            animation: bgShift 20s ease infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--neon);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(-50px);
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(50px);
+            }
+        }
+
+        .signup-box {
+            background: rgba(10, 20, 35, 0.9);
+            padding: 35px;
+            width: 380px; 
+            border-radius: 20px;
+            
+            border: 1px solid rgba(29, 191, 222, 0.6);
+            box-shadow: 0 0 30px rgba(29, 191, 222, 0.4);
+        
+            
+            text-align: center;
+            position: relative;
+            z-index: 10; 
+            max-height: 90vh;
+            overflow-y: auto; 
+        }
+        
+        .signup-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .signup-box::-webkit-scrollbar-thumb {
+            background-color: var(--neon);
+            border-radius: 4px;
+        }
+        .signup-box::-webkit-scrollbar-track {
+            background: #1a2a3a;
+        }
+
+
+        .signup-box .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px auto;
+            border-radius: 50%;
+            display: inline-block;
+            background: url('') no-repeat center center/contain;
+            box-shadow: 0 0 20px var(--neon);
+            border: 3px solid var(--neon);
+        }
+
+        .signup-box h2 {
+            margin-bottom: 25px;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--light-text);
+            text-shadow: 0 0 15px var(--neon);
+            letter-spacing: 1px;
+        }
+        
+        .form-label-custom {
+            display: block; 
+            text-align: left; 
+            margin-top: 15px; 
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #cdefff;
+            font-size: 15px;
+        }
+
+
+        .signup-box input,
+        .signup-box select {
+            width: 100%;
+            padding: 12px;
+            margin: 0; 
+            border-radius: 10px;
+            
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(29, 191, 222, 0.5);
+            color: var(--light-text) !important;
+            caret-color: var(--light-text);
+            
+            outline: none;
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: 0.3s all;
+        }
+        
+        .signup-box input[type="text"],
+        .signup-box input[type="email"],
+        .signup-box input[type="password"] {
+            margin-bottom: 15px;
+        }
+
+
+        .signup-box input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .signup-box input:focus,
+        .signup-box select:focus {
+            background: rgba(29, 191, 222, 0.15);
+            border-color: var(--neon);
+            box-shadow: 0 0 15px rgba(29, 191, 222, 0.6);
+            transform: translateY(-1px);
+        }
+
+        .signup-box select option {
+            background: var(--deep);
+            color: var(--light-text);
+        }
+
+        .input-with-prefix {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(29, 191, 222, 0.5); 
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08); 
+            margin-bottom: 15px; 
+        }
+
+        .input-with-prefix .country-code-select {
+            width: auto;
+            background: transparent;
+            border: none;
+            margin: 0;
+            padding: 12px 10px;
+            font-weight: bold;
+            color: var(--neon);
+            border-right: 1px solid rgba(29, 191, 222, 0.5);
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .input-with-prefix input[type="tel"] {
+            padding-left: 15px; 
+            margin: 0;
+            width: 100%;
+            border: none;
+            background: transparent;
+        }
+
+        .input-with-prefix:focus-within {
+            border-color: var(--neon);
+            box-shadow: 0 0 15px rgba(29, 191, 222, 0.6);
+        }
+
+        .input-with-prefix input[type="tel"]:focus {
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .profile-upload-zone {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 20px auto 30px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            border: 3px dashed var(--neon);
+            background: rgba(29, 191, 222, 0.1);
+            box-shadow: 0 0 20px rgba(29, 191, 222, 0.8);
+            transition: 0.3s;
+            overflow: hidden; 
+            position: relative; 
+        }
+        
+        .profile-upload-zone img.preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .profile-upload-zone label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            color: #cdefff;
+            font-size: 13px;
+            line-height: 1.4;
+            position: absolute; 
+            top: 0; left: 0;
+            z-index: 2; 
+            transition: opacity 0.3s;
+        }
+
+        .profile-upload-zone:hover label {
+            opacity: 0.8; 
+            background: rgba(10, 20, 35, 0.5); 
+        }
+        
+        .profile-upload-zone:hover {
+            transform: scale(1.05);
+            background: rgba(29, 191, 222, 0.2);
+            box-shadow: 0 0 30px rgba(29, 191, 222, 1);
+        }
+
+        .upload-icon {
+            font-size: 30px;
+            margin-bottom: 5px;
+            color: var(--light-text);
+        }
+
+        .signup-box button {
+            width: 100%;
+            padding: 15px;
+            background: var(--neon);
+            color: var(--deep); 
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.4s;
+            box-shadow: 0 0 20px rgba(29, 191, 222, 0.7);
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .signup-box button:hover {
+            background: #17c9e8;
+            box-shadow: 0 0 35px rgba(29, 191, 222, 1), 0 0 70px rgba(29, 191, 222, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .signup-box .back-link {
+            display: block;
+            margin-top: 15px;
+            color: #cdefff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s color;
+        }
+
+        .signup-box .back-link:hover {
+            color: var(--neon);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="particles" id="particles"></div>
+    
+    <div class="signup-box">
+
+        <div class="logo"></div>
+
+        <h2>Créer un Compte</h2>
+
+        <form action="profile.html" method="POST" enctype="multipart/form-data">
+
+            <label for="full-name" class="form-label-custom">Nom complet</label>
+            <input type="text" id="full-name" placeholder="Votre nom et prénom" required>
+            
+            <label for="email" class="form-label-custom">Adresse email</label>
+            <input type="email" id="email" placeholder="exemple@domaine.com" required>
+
+            <label for="nationality" class="form-label-custom">Nationalité</label>
+            <input type="text" id="nationality" placeholder="Ex: 🇹🇳 Tunisienne" required>
+            
+            <label for="address" class="form-label-custom">Adresse</label>
+            <input type="text" id="address" placeholder="Ville, pays" required>
+            
+            
+            <label for="phone-number" class="form-label-custom">Numéro de Téléphone</label>
+            <div class="input-with-prefix">
+                <select class="country-code-select" required aria-label="Code pays">
+                    <option value="+216" selected> +216 (Tunisie)</option>
+                    <option value="+213"> +213 (Algérie)</option>
+                    <option value="+212"> +212 (Maroc)</option>
+                    <option value="+20"> +20 (Égypte)</option>
+                    <option value="+966"> +966 (Arabie Saoudite)</option>
+                    <option value="+971">+971 (Émirats Arabes Unis)</option>
+
+                    <option value="+33"> +33 (France)</option>
+                    <option value="+49"> +49 (Allemagne)</option>
+                    <option value="+44"> +44 (Royaume-Uni)</option>
+                    <option value="+34"> +34 (Espagne)</option>
+                    <option value="+39"> +39 (Italie)</option>
+                    <option value="+32"> +32 (Belgique)</option>
+                    <option value="+31"> +31 (Pays-Bas)</option>
+                    <option value="+41"> +41 (Suisse)</option>
+
+                    <option value="+1">+1 (États-Unis/Canada)</option>
+                    <option value="+52"> +52 (Mexique)</option>
+                    <option value="+55">+55 (Brésil)</option>
+                    <option value="+54">+54 (Argentine)</option>
+
+                    <option value="+86">+86 (Chine)</option>
+                    <option value="+91">+91 (Inde)</option>
+                    <option value="+81"> +81 (Japon)</option>
+
+                    <option value="+61"> +61 (Australie)</option>
+
+                    <option value="+7">+7 (Russie/Kazakhstan)</option>
+                    <option value="+90"> +90 (Turquie)</option>
+
+                </select> 
+                <input type="tel" id="phone-number" placeholder="Numéro de téléphone" required>
+            </div>
+            
+
+            <label for="password" class="form-label-custom">Mot de passe</label>
+            <input type="password" id="password" placeholder="Minimum 8 caractères" required>
+            
+            <label for="confirm-password" class="form-label-custom">Confirmer le mot de passe</label>
+            <input type="password" id="confirm-password" placeholder="Doit correspondre au mot de passe" required>
+
+            <div class="profile-upload-zone" id="upload-zone">
+                <label for="profile-image">
+                    <span class="upload-icon">📸</span>
+                    <p>Cliquez ici pour télécharger votre photo</p>
+                </label>
+                <input type="file" id="profile-image" name="profile-image" accept="image/*" style="display: none;">
+            </div>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+        
+        <a href="connexion.html" class="back-link">
+            J'ai déjà un compte
+        </a>
+
+    </div>
+
+    <script>
+        const particles = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.width = p.style.height = Math.random() * 5 + 2 + 'px';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDelay = Math.random() * 15 + 's';
+            p.style.animationDuration = 10 + Math.random() * 20 + 's';
+            particles.appendChild(p);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const uploadZone = document.getElementById('upload-zone');
+            const fileInput = document.getElementById('profile-image');
+            const label = uploadZone.querySelector('label');
+
+            uploadZone.addEventListener('click', (e) => {
+                if(e.target !== label && !label.contains(e.target)) {
+                    fileInput.click();
+                }
+            });
+
+            fileInput.addEventListener('change', function(event) {
+                const [file] = event.target.files;
+                if (file) {
+                    const imgPreview = document.createElement('img');
+                    imgPreview.src = URL.createObjectURL(file);
+                    imgPreview.className = 'preview-img';
+
+                    const existingImg = uploadZone.querySelector('.preview-img');
+                    if (existingImg) {
+                        uploadZone.removeChild(existingImg);
+                    }
+                    
+                    uploadZone.appendChild(imgPreview);
+                } else {
+                     const existingImg = uploadZone.querySelector('.preview-img');
+                     if (existingImg) {
+                         uploadZone.removeChild(existingImg);
+                     }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

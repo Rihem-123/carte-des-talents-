@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le Profil – SkillSphere</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        :root { --neon: #1DBFDE; }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #0f1c2c, #0d283f, #1e4d5c, #0a1f33);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            font-family: 'Segoe UI', sans-serif;
+            color: #E0E0E0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .edit-card {
+            background: rgba(26, 42, 58, 0.95);
+            border: 1px solid rgba(29,191,222,0.4);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            backdrop-filter: blur(12px);
+            width: 100%;
+            max-width: 520px;
+            padding: 40px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-upload-zone {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 3px dashed var(--neon);
+            background: rgba(29,191,222,0.1);
+            box-shadow: 0 0 20px rgba(29,191,222,0.8);
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .profile-upload-zone:hover {
+            transform: scale(1.08);
+            background: rgba(29,191,222,0.2);
+            box-shadow: 0 0 35px rgba(29,191,222,1);
+        }
+
+        .profile-upload-zone label {
+            color: #cdefff;
+            font-size: 13px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .upload-icon { font-size: 34px; color: #fff; margin-bottom: 6px; }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            font-weight: 700;
+            text-shadow: 0 0 15px var(--neon);
+            margin-bottom: 10px;
+        }
+
+        .form-label {
+            color: #cdefff;
+            font-weight: 500;
+        }
+
+        .form-control, .form-select {
+            background: rgba(15,28,44,0.8) !important;
+            border: 1px solid rgba(29,191,222,0.5) !important;
+            color: #fff !important;
+            border-radius: 12px;
+            padding: 12px 16px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--neon) !important;
+            box-shadow: 0 0 15px rgba(29,191,222,0.6) !important;
+            background: rgba(29,191,222,0.15) !important;
+        }
+
+        .input-group-text {
+            background: rgba(29,191,222,0.2);
+            border: 1px solid rgba(29,191,222,0.5);
+            color: var(--neon);
+        }
+
+        .btn-primary {
+            background: var(--neon);
+            color: #0f1c2c;
+            font-weight: bold;
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(29,191,222,0.7);
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #17c9e8;
+            box-shadow: 0 0 30px rgba(29,191,222,1);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 12px;
+            padding: 12px 24px;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--neon);
+            color: var(--neon);
+        }
+
+        hr {
+            border-color: rgba(29,191,222,0.3);
+            margin: 35px 0;
+        }
+
+        h5 {
+            color: var(--neon);
+            text-shadow: 0 0 10px rgba(29,191,222,0.6);
+        }
+    </style>
+</head>
+<body>
+
+<div class="edit-card">
+
+    <div class="text-center mb-4">
+        <div class="profile-upload-zone">
+            <label for="profileImage">
+                <div class="upload-icon">Camera</div>
+                <div>Cliquez ici pour télécharger votre photo</div>
+            </label>
+            <input type="file" id="profileImage" name="profileImage" accept="image/*" style="display:none;">
+        </div>
+        <h2>Modifier mon Profil</h2>
+    </div>
+
+    <form action="profile.html" method="POST" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label class="form-label">Nom complet</label>
+            <input type="text" class="form-control" value="Aymen Ben Hassen" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" value="aymen.bh@skillsphere.tn" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Téléphone</label>
+            <div class="input-group">
+                <span class="input-group-text">+216</span>
+                <input type="tel" class="form-control" value="55 123 456" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Adresse</label>
+            <input type="text" class="form-control" value="Sousse, Tunisie">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">À propos de moi</label>
+            <textarea class="form-control" rows="4">Passionné par la création d'applications web scalables...</textarea>
+        </div>
+
+        <hr>
+
+        <h5>Sécurité du compte</h5>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <input type="password" class="form-control" placeholder="Nouveau mot de passe">
+            </div>
+            <div class="col-md-6">
+                <input type="password" class="form-control" placeholder="Confirmer">
+            </div>
+        </div>
+
+        <div class="d-flex gap-3 justify-content-end">
+            <a href="profile.html" class="btn btn-secondary">Annuler</a>
+            <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+        </div>
+
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

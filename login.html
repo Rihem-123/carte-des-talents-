@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion – SkillSphere</title>
+
+    <style>
+        /* Variables */
+        :root { 
+            --neon: #1DBFDE; 
+            --deep: #0f1c2c; 
+            --light-text: #fff;
+        }
+
+        /* Réinitialisation de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ----- 1. BACKGROUND GLOBAL (Gradient Animé + Particules) ----- */
+        /* ---------------------------------------------------- */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            height: 100vh;
+            color: var(--light-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Important pour les particules */
+            position: relative;
+
+            /* Gradient animé de la page Admin */
+            background: linear-gradient(135deg, #0a1628, #0f1c2c, #0a1f33);
+            background-size: 300% 300%;
+            animation: bgShift 20s ease infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* --- PARTCULES --- */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--neon);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(-50px);
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+            }
+        }
+
+        /* ---------------------------------------------------- */
+        /* ----- 2. CONTAINER LOGIN (Effet Blur & Glow) ----- */
+        /* ---------------------------------------------------- */
+        .login-box {
+            /* Styles Admin Login Container */
+            background: rgba(10, 20, 35, 0.9);
+            padding: 50px 40px;
+            width: 380px;
+            border-radius: 20px;
+            border: 1px solid rgba(29, 191, 222, 0.6);
+            box-shadow: 
+                0 0 30px rgba(29, 191, 222, 0.4),
+                inset 0 0 15px rgba(29, 191, 222, 0.1);
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        /* ----- Logo (Cercle avec votre image de carte des talents) ----- */
+        .login-box .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px auto;
+            border-radius: 50%;
+            display: inline-block;
+            
+            background: url('') no-repeat center center/contain;
+            border: 3px solid var(--neon);
+            box-shadow: 0 0 20px var(--neon);
+            transition: 0.5s;
+        }
+        
+        .login-box .logo:hover {
+            box-shadow: 0 0 30px var(--neon), 0 0 50px rgba(29, 191, 222, 0.8);
+        }
+        
+        .login-box h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light-text);
+            text-shadow: 0 0 15px var(--neon); 
+            letter-spacing: 1px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ----- 3. INPUTS (Modernes & Transparents) ----- */
+        /* ---------------------------------------------------- */
+        .login-box input {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 12px;
+            
+            /* Styles Admin Login */
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(29, 191, 222, 0.5);
+            color: var(--light-text) !important;
+            caret-color: var(--light-text);
+            
+            outline: none;
+            font-size: 15px;
+            transition: 0.3s all;
+        }
+        
+        .login-box input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .login-box input:focus {
+            background: rgba(29, 191, 222, 0.15);
+            border-color: var(--neon);
+            box-shadow: 0 0 15px rgba(29, 191, 222, 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* ---------------------------------------------------- */
+        /* ----- 4. BUTTON (Glow Effect) ----- */
+        /* ---------------------------------------------------- */
+        .login-box button {
+            width: 100%;
+            padding: 0; /* Important pour mettre le lien à l'intérieur */
+            background: none;
+            border: none;
+            margin-top: 25px;
+        }
+        
+        /* Style appliqué à l'ancre <a> pour le look du bouton */
+        .login-box button a {
+            display: block;
+            padding: 15px;
+            background: var(--neon);
+            color: var(--deep); /* Couleur sombre sur le bouton néon */
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 25px rgba(29, 191, 222, 0.7);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-box button a:hover {
+            background: #17c9e8;
+            box-shadow: 0 0 35px rgba(29, 191, 222, 1), 0 0 70px rgba(29, 191, 222, 0.4);
+            transform: translateY(-3px);
+            color: var(--deep);
+        }
+        
+        .login-box .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #8ab4f8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s color;
+        }
+        
+        .login-box .back-link:hover {
+            color: var(--neon);
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="particles" id="particles"></div>
+
+    <div class="login-box">
+        
+        <div class="logo"></div>
+        
+        <h2>Connexion à SkillSphere</h2>
+
+        <form>
+            <input type="email" placeholder="Adresse email" required>
+            <input type="password" placeholder="Mot de passe" required>
+
+            <button type="submit"> 
+                <a href="profile.html">Se connecter</a> 
+            </button>
+        </form>
+        
+        <a href="register.html" class="back-link">Pas encore de compte ? S'inscrire ici</a>
+
+    </div>
+
+    <script>
+        const particles = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.width = p.style.height = Math.random() * 5 + 2 + 'px';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDelay = Math.random() * 15 + 's';
+            p.style.animationDuration = 10 + Math.random() * 20 + 's';
+            particles.appendChild(p);
+        }
+    </script>
+
+</body>
+</html>
