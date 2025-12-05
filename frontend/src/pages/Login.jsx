@@ -103,18 +103,6 @@ const Login = () => {
             </Link>
           </p>
         </div>
-
-        <div className="auth-demo">
-          <p className="demo-title">Comptes de démonstration :</p>
-          <div className="demo-accounts">
-            <div className="demo-account">
-              <strong>Admin:</strong> admin / admin123
-            </div>
-            <div className="demo-account">
-              <strong>User:</strong> marie_dupont / password123
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
